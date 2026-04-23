@@ -24,7 +24,6 @@
             <li><a href="#ac2">AC2</a></li>
             <li><a href="#ac3">AC3</a></li>
             <li><a href="#ac4">AC4</a></li>
-            <li><a href="#carrusel">Galería</a></li>
             <li><a href="#test">Test</a></li>
             <li><a href="#equipo">Equipo</a></li>
         </ul>
@@ -32,7 +31,7 @@
 </header>
 
 <main>
-    <!-- HERO -->
+    <!-- HERO CON IMAGEN DENTRO DEL CUADRO FLOTANTE -->
     <section id="inicio" class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -55,11 +54,18 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="floating-card"><i class="fas fa-seedling"></i><h3>"Cuidar el jardín de la vida"</h3><p>Metáfora artística del equipo</p></div>
+                <div class="floating-card">
+                    <!-- IMAGEN DENTRO DEL CUADRO FLOTANTE -->
+                    <img src="https://i.postimg.cc/V62k108C/IMAGEN-DE-ETICA-Y-NUTRICION.jpg" alt="Ética y Nutrición" style="width:100%; max-width:180px; border-radius:15px; margin-bottom:1rem; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+                    <i class="fas fa-seedling"></i>
+                    <h3>"Cuidar el jardín de la vida"</h3>
+                    <p>Metáfora artística del equipo</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- RESTO DEL CONTENIDO IGUAL (AC1, AC2, AC3, AC4, TEST, EQUIPO, ETC.) -->
     <!-- FILÓSOFOS -->
     <section id="filosofos" class="section-filosofos">
         <div class="container">
@@ -101,15 +107,18 @@
                     <div class="purpose-footer"><i class="fas fa-quote-right"></i><span>Formar profesionales íntegros que contribuyan al bienestar social</span></div>
                 </div>
             </div>
+            <div class="semana-imagen">
+                <img src="https://i.postimg.cc/xChPL5KH/AC1.jpg" alt="AC1 - Metáfora artística">
+                <p class="imagen-pie">AC1 · Metáfora artística · "El Jardín de la Vida"</p>
+            </div>
         </div>
     </section>
 
-    <!-- AC2 - TARJETAS FLIP 3D -->
+    <!-- AC2 -->
     <section id="ac2" class="section semana2-bg-section">
         <div class="container">
             <div class="semana-badge semana2"><i class="fas fa-heart"></i> AC2 · Semana 2 · Poblaciones vulnerables</div>
             <div class="ac2-grid flip-grid">
-                <!-- Tarjeta 1: Enfermedades crónicas -->
                 <div class="vulnerable-card flip-card">
                     <div class="flip-inner">
                         <div class="flip-front">
@@ -125,7 +134,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tarjeta 2: Mujeres gestantes (icono especial) -->
                 <div class="vulnerable-card flip-card">
                     <div class="flip-inner">
                         <div class="flip-front">
@@ -141,7 +149,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tarjeta 3: Adultos mayores -->
                 <div class="vulnerable-card flip-card">
                     <div class="flip-inner">
                         <div class="flip-front">
@@ -157,7 +164,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tarjeta 4: Personas con TCA -->
                 <div class="vulnerable-card flip-card">
                     <div class="flip-inner">
                         <div class="flip-front">
@@ -175,10 +181,14 @@
                 </div>
             </div>
             <div class="commitment-card"><i class="fas fa-handshake"></i><h3>Compromiso Ético del Equipo</h3><p>"Nos comprometemos a cuidar el 'jardín de la vida', observando y reconociendo a las personas vulnerables que necesitan atención sensible y personalizada."</p></div>
+            <div class="semana-imagen">
+                <img src="https://i.postimg.cc/V6pFXgjj/AC2.jpg" alt="AC2 - Poblaciones vulnerables">
+                <p class="imagen-pie">AC2 · Poblaciones vulnerables · Nuestro compromiso</p>
+            </div>
         </div>
     </section>
 
-    <!-- AC3 - PIRÁMIDE INTERACTIVA -->
+    <!-- AC3 -->
     <section id="ac3" class="section semana3-bg-section">
         <div class="container">
             <div class="semana-badge semana3"><i class="fas fa-chart-simple"></i> AC3 · Semana 3 · Jerarquía de valores (Scheler)</div>
@@ -209,7 +219,11 @@
                 </div>
             </div>
             <div class="tension-card"><h3><i class="fas fa-scale-balanced"></i> Tensión axiológica</h3><p><strong>Libertad vs Justicia</strong> - Caso <strong>Qali-Warma</strong>: Nutricionistas entre reportar alimentos en mal estado o callarse ante presión del Estado.</p></div>
-            <div class="axiology-box"><i class="fas fa-scroll"></i><h3>Declaración axiológica</h3><p>Promovemos hábitos saludables, accesibles y sostenibles, actuando con responsabilidad ética.</p></div>
+            <div class="axiology-box"><i class="fas fa-scroll"></i><h3>Declaración axiológica</h3><p>Promovemos hábitos saludables, accesibles y sostenibles, actuando con responsabilidad ética en el cuidado de la salud individual y colectiva.</p></div>
+            <div class="semana-imagen">
+                <img src="https://i.postimg.cc/Px9M1ym1/AC3.jpg" alt="AC3 - Jerarquía de valores">
+                <p class="imagen-pie">AC3 · Jerarquía de valores · Pirámide de Scheler</p>
+            </div>
         </div>
     </section>
 
@@ -223,35 +237,14 @@
                 <div class="negligence-card"><div class="neg-header"><i class="fas fa-weight-scale"></i><span>Negligencia 3</span></div><h3>Mala supervisión alimentaria</h3><p><strong>Falacia:</strong> "Comer por dos"</p><div class="solution"><i class="fas fa-lightbulb"></i> Orientación personalizada</div></div>
             </div>
             <div class="socratic-box"><i class="fas fa-question-circle"></i><h3>Pregunta socrática del equipo</h3><p>¿Por qué se considera que los productos "light" son automáticamente más saludables, sin cuestionar su nivel de procesamiento?</p></div>
+            <div class="semana-imagen">
+                <img src="https://i.postimg.cc/Qtwqcmp9/AC4.jpg" alt="AC4 - Mapa de negligencias">
+                <p class="imagen-pie">AC4 · Mapa de negligencias · Diagnóstico crítico</p>
+            </div>
         </div>
     </section>
 
-    <!-- CARRUSEL DE IMÁGENES EXPLOSIVO -->
-    <section id="carrusel" class="section carrusel-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fas fa-images"></i> Galería Explosiva</span>
-                <h2>🎨 Imágenes que Explotan la Cabeza</h2>
-                <div class="divider"></div>
-                <p class="section-subtitle">Nutrición, ética y vida saludable en imágenes vibrantes</p>
-            </div>
-            <div class="carousel-container">
-                <div class="carousel-slides">
-                    <div class="carousel-slide"><img src="https://i.postimg.cc/fRhmxQDQ/frutas-vibrantes.png" alt="Frutas vibrantes"></div>
-                    <div class="carousel-slide"><img src="https://i.postimg.cc/qvXnwDvT/emnarazada-saludable.jpg" alt="Embarazada saludable"></div>
-                    <div class="carousel-slide"><img src="https://i.postimg.cc/t4tPkv4b/justicia-y-equilibrio.jpg" alt="Justicia y equilibrio"></div>
-                    <div class="carousel-slide"><img src="https://i.postimg.cc/RZQfdpZM/vejes-saludable.jpg" alt="Vejez saludable"></div>
-                    <div class="carousel-slide"><img src="https://i.postimg.cc/0ydmnXyx/ninos-felices-sladubale.jpg" alt="Niños felices"></div>
-                    <div class="carousel-slide"><img src="https://i.postimg.cc/Nj7TDCjj/profesionales-de-la-slaud.jpg" alt="Profesionales de la salud"></div>
-                </div>
-                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="carousel-dots"></div>
-        </div>
-    </section>
-
-    <!-- TEST INTERACTIVO -->
+    <!-- TEST -->
     <section id="test" class="section test-section">
         <div class="container">
             <div class="section-header">
@@ -334,7 +327,7 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo"><i class="fas fa-seedling"></i><span>Manifiesto Ético</span><p>Curso de Ética y Deontología Profesional · UCSUR · 2026-1</p></div>
-            <div class="footer-links"><h4>Secciones</h4><a href="#ac1">AC1</a><a href="#ac2">AC2</a><a href="#ac3">AC3</a><a href="#ac4">AC4</a><a href="#carrusel">Galería</a><a href="#test">Test</a></div>
+            <div class="footer-links"><h4>Secciones</h4><a href="#ac1">AC1</a><a href="#ac2">AC2</a><a href="#ac3">AC3</a><a href="#ac4">AC4</a><a href="#test">Test</a></div>
             <div class="footer-links"><h4>Integrantes</h4><a href="#">Walter Vinces</a><a href="#">Naidelyn Villacorta</a><a href="#">Analy Mendoza</a><a href="#">Belén Bazan</a><a href="#">Alondra Coveñas</a><a href="#">Josemaria Marquina</a></div>
         </div>
         <div class="footer-bottom"><p>&copy; 2026 Grupo 3 · Manifiesto de Identidad Ética · EC1 - Semana 5</p></div>
@@ -343,7 +336,6 @@
 
 <button id="scrollTopBtn" class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
 
-<!-- Modal para filósofos -->
 <div id="filosofoModal" class="modal">
     <div class="modal-content">
         <span class="modal-close">&times;</span>

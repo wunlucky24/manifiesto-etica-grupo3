@@ -174,45 +174,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ========== CARRUSEL DE IMÁGENES ==========
-    const slides = document.querySelector('.carousel-slides');
-    const slidesCount = document.querySelectorAll('.carousel-slide').length;
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    
-    let currentIndex = 0;
-    
-    if (slides && slidesCount > 0) {
-        // Crear dots
-        for (let i = 0; i < slidesCount; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-        
-        function goToSlide(index) {
-            if (index < 0) index = slidesCount - 1;
-            if (index >= slidesCount) index = 0;
-            currentIndex = index;
-            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            document.querySelectorAll('.dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
-        
-        if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-        if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-        
-        // Auto slide cada 5 segundos
-        setInterval(() => {
-            goToSlide(currentIndex + 1);
-        }, 5000);
-    }
-    
     // ========== TEST INTERACTIVO ==========
     const questions = document.querySelectorAll('.test-question');
     const testResult = document.querySelector('.test-result');
@@ -280,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ========== ANIMACIONES AL SCROLL ==========
-    const animateElements = document.querySelectorAll('.metaphor-card, .purpose-card, .vulnerable-card, .filosofo-card, .negligence-card, .recurso-card, .equipo-card, .value-row, .flip-card, .timeline-item');
+    const animateElements = document.querySelectorAll('.metaphor-card, .purpose-card, .vulnerable-card, .filosofo-card, .negligence-card, .equipo-card, .value-row, .flip-card');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -334,14 +295,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroStats) statsObserver.observe(heroStats);
     }
     
-    // ========== LOG EN CONSOLA ==========
     console.log('✅ Manifiesto de Identidad Ética - Grupo 3 cargado correctamente');
     console.log('👥 Integrantes: 6 con fotos reales');
     console.log('📚 AC1, AC2, AC3, AC4 completados');
     console.log('🎨 Filósofos: 7 con imágenes de PostImage');
     console.log('🌓 Modo oscuro/claro activado');
     console.log('🃏 Tarjetas FLIP 3D activadas');
-    console.log('🎠 Carrusel de imágenes funcionando');
     console.log('📝 Test interactivo listo');
     console.log('💥 Animaciones explosivas activadas');
 });

@@ -53,8 +53,7 @@ body.dark-mode .recurso-card,
 body.dark-mode .equipo-card,
 body.dark-mode .filosofo-card,
 body.dark-mode .values-pyramid,
-body.dark-mode .test-container,
-body.dark-mode .timeline-content {
+body.dark-mode .test-container {
     background: var(--card-bg);
     color: var(--text-color);
 }
@@ -65,7 +64,6 @@ body.dark-mode .timeline-content {
     padding: 0 24px;
 }
 
-/* Header */
 .header {
     position: fixed;
     top: 0;
@@ -171,7 +169,6 @@ body.dark-mode .nav-list a {
     transition: var(--transition);
 }
 
-/* Hero */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -314,7 +311,6 @@ body.dark-mode .hero {
     margin-bottom: 1rem;
 }
 
-/* Sección Filósofos */
 .section-filosofos {
     padding: 80px 0;
     background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
@@ -405,7 +401,6 @@ body.dark-mode .section-filosofos {
     color: var(--gray-600);
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -472,7 +467,6 @@ body.dark-mode .section-filosofos {
     font-size: 1rem;
 }
 
-/* Secciones de semanas */
 .section {
     padding: 80px 0;
 }
@@ -514,7 +508,6 @@ body.dark-mode .semana4-bg-section {
 .semana3 { background: var(--secondary); color: white; }
 .semana4 { background: var(--accent-dark); color: white; }
 
-/* AC1 */
 .ac1-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -564,7 +557,6 @@ body.dark-mode .semana4-bg-section {
     color: var(--primary);
 }
 
-/* AC2 - Tarjetas FLIP 3D */
 .flip-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -659,7 +651,6 @@ body.dark-mode .semana4-bg-section {
     margin-bottom: 1rem;
 }
 
-/* AC3 */
 .values-pyramid {
     background: white;
     border-radius: 24px;
@@ -739,7 +730,6 @@ body.dark-mode .semana4-bg-section {
     text-align: center;
 }
 
-/* AC4 */
 .ac4-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -786,80 +776,36 @@ body.dark-mode .semana4-bg-section {
     margin-bottom: 1rem;
 }
 
-/* CARRUSEL */
-.carrusel-section {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+/* IMÁGENES GRANDES POR SEMANA */
+.semana-imagen {
+    margin-top: 3rem;
+    text-align: center;
 }
 
-.carousel-container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
+.semana-imagen img {
+    max-width: 100%;
+    height: auto;
     border-radius: 20px;
     box-shadow: var(--shadow-lg);
-}
-
-.carousel-slides {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.carousel-slide {
-    min-width: 100%;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: var(--transition);
-    z-index: 10;
-}
-
-.carousel-btn:hover {
-    background: var(--primary);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.prev { left: 20px; }
-.next { right: 20px; }
-
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.8rem;
-    margin-top: 1.5rem;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    background: var(--gray-300);
-    border-radius: 50%;
-    cursor: pointer;
     transition: var(--transition);
 }
 
-.dot.active {
-    background: var(--primary);
-    transform: scale(1.2);
+.semana-imagen img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-/* TEST INTERACTIVO */
+.imagen-pie {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    font-style: italic;
+}
+
+body.dark-mode .imagen-pie {
+    color: var(--gray-600);
+}
+
 .test-section {
     background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
 }
@@ -937,7 +883,6 @@ body.dark-mode .semana4-bg-section {
     margin-top: 1rem;
 }
 
-/* Equipo */
 .equipo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1007,7 +952,6 @@ body.dark-mode .semana4-bg-section {
     color: var(--gray-600);
 }
 
-/* Conclusiones */
 .conclusion-bg {
     background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
 }
@@ -1051,7 +995,6 @@ body.dark-mode .semana4-bg-section {
     font-size: 0.85rem;
 }
 
-/* Footer */
 .footer {
     background: var(--dark);
     color: white;
@@ -1104,7 +1047,6 @@ body.dark-mode .semana4-bg-section {
     font-size: 0.8rem;
 }
 
-/* Scroll Top */
 .scroll-top-btn {
     position: fixed;
     bottom: 30px;
@@ -1132,7 +1074,6 @@ body.dark-mode .semana4-bg-section {
     transform: translateY(-3px);
 }
 
-/* Animaciones */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1144,7 +1085,6 @@ body.dark-mode .semana4-bg-section {
     100% { opacity: 1; transform: scale(1) rotate(0); }
 }
 
-/* Responsive */
 @media (max-width: 968px) {
     .hero-container {
         grid-template-columns: 1fr;
@@ -1200,9 +1140,6 @@ body.dark-mode .semana4-bg-section {
     }
     .flip-card {
         height: 300px;
-    }
-    .carousel-slide img {
-        height: 250px;
     }
 }
 
