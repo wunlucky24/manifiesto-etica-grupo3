@@ -295,6 +295,141 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroStats) statsObserver.observe(heroStats);
     }
     
+    // ========== MODAL PARA IMÁGENES GRANDES ==========
+    const modalImagen = document.getElementById('modalImagen');
+    const modalImgGrande = document.getElementById('imgModal');
+    const cerrarModalImg = document.querySelector('.cerrar-modal');
+    
+    const imagenesModal = document.querySelectorAll('.imagen-modal');
+    
+    imagenesModal.forEach(img => {
+        img.addEventListener('click', function() {
+            modalImagen.style.display = 'block';
+            modalImgGrande.src = this.getAttribute('data-src') || this.src;
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    if (cerrarModalImg) {
+        cerrarModalImg.addEventListener('click', function() {
+            modalImagen.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    modalImagen.addEventListener('click', function(e) {
+        if (e.target === modalImagen) {
+            modalImagen.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalImagen.style.display === 'block') {
+            modalImagen.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // ========== MODO LECTURA PARA EL GUION ==========
+    const dialogosGuion = document.querySelectorAll('.dialogo-guion');
+    let modoLecturaActivo = false;
+    let indiceGuion = 0;
+    
+    if (dialogosGuion.length > 0) {
+        const guionSection = document.getElementById('guion');
+        const btnContainer = document.createElement('div');
+        btnContainer.style.textAlign = 'center';
+        btnContainer.style.marginBottom = '2rem';
+        
+        const btnLectura = document.createElement('button');
+        btnLectura.id = 'modoLecturaGuion';
+        btnLectura.className = 'btn btn-outline';
+        btnLectura.innerHTML = '<i class="fas fa-eye"></i> Modo Lectura (clic para avanzar)';
+        btnLectura.style.margin = '0 auto';
+        
+        btnContainer.appendChild(btnLectura);
+        guionSection.insertBefore(btnContainer, guionSection.querySelector('.guion-participantes'));
+        
+        const btn = document.getElementById('modoLecturaGuion');
+        
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (!modoLecturaActivo) {
+                modoLecturaActivo = true;
+                indiceGuion = 0;
+                dialogosGuion.forEach(d => d.style.opacity = '0.3');
+                dialogosGuion.forEach(d => d.style.transition = 'opacity 0.3s');
+                dialogosGuion[0].style.opacity = '1';
+                this.innerHTML = '<i class="fas fa-stop"></i> Detener Lectura';
+                this.style.borderColor = '#e63946';
+                this.style.color = '#e63946';
+                dialogosGuion[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                modoLecturaActivo = false;
+                dialogosGuion.forEach(d => d.style.opacity = '1');
+                this.innerHTML = '<i class="fas fa-eye"></i> Modo Lectura (clic para avanzar)';
+                this.style.borderColor = '';
+                this.style.color = '';
+            }
+        });
+        
+        guionSection.addEventListener('click', function(e) {
+            if (e.target.closest('#modoLecturaGuion')) return;
+            if (modoLecturaActivo) {
+                indiceGuion++;
+                if (indiceGuion < dialogosGuion.length) {
+                    dialogosGuion.forEach(d => d.style.opacity = '0.3');
+                    dialogosGuion[indiceGuion].style.opacity = '1';
+                    dialogosGuion[indiceGuion].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    modoLecturaActivo = false;
+                    dialogosGuion.forEach(d => d.style.opacity = '1');
+                    const btn = document.getElementById('modoLecturaGuion');
+                    if (btn) {
+                        btn.innerHTML = '<i class="fas fa-eye"></i> Modo Lectura (clic para avanzar)';
+                        btn.style.borderColor = '';
+                        btn.style.color = '';
+                    }
+                    const fraseFinal = guionSection.querySelector('.frase-final-guion');
+                    if (fraseFinal) {
+                        fraseFinal.style.animation = 'pulse 0.5s ease 3';
+                        fraseFinal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+        });
+    }
+    
+    // ========== CONTADOR DE VISITAS DEL PODCAST ==========
+    const podcastSection = document.getElementById('podcast');
+    let visitasPodcast = localStorage.getItem('visitasPodcast') || 0;
+    
+    if (podcastSection) {
+        const observerPodcast = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    visitasPodcast++;
+                    localStorage.setItem('visitasPodcast', visitasPodcast);
+                    console.log(`🎙️ Podcast visto ${visitasPodcast} veces`);
+                    observerPodcast.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observerPodcast.observe(podcastSection);
+    }
+    
+    // ========== ANIMACIÓN DE PULSO PARA EL FINAL ==========
+    const stylePulse = document.createElement('style');
+    stylePulse.textContent = `
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    `;
+    document.head.appendChild(stylePulse);
+    
     console.log('✅ Manifiesto de Identidad Ética - Grupo 3 cargado correctamente');
     console.log('👥 Integrantes: 6 con fotos reales');
     console.log('📚 AC1, AC2, AC3, AC4 completados');
@@ -303,4 +438,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🃏 Tarjetas FLIP 3D activadas');
     console.log('📝 Test interactivo listo');
     console.log('💥 Animaciones explosivas activadas');
+    console.log('🖼️ Modal de imágenes grandes activado');
+    console.log('🎙️ Modo lectura del guion activado');
+    console.log('🎧 Podcast agregado con contador de visitas');
+    console.log('🎬 Video-reacción agregada');
 });
