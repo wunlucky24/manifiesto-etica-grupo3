@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ========== MENÚ HAMBURGUESA ==========
     const hamburger = document.getElementById('hamburger');
     const navList = document.getElementById('navList');
     
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== SCROLL SUAVE ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ========== BOTÓN SCROLL TOP ==========
     const scrollBtn = document.getElementById('scrollTopBtn');
     if (scrollBtn) {
         window.addEventListener('scroll', () => {
@@ -47,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== HEADER CAMBIA DE FONDO ==========
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -59,9 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ========== MODO OSCURO ==========
     const darkModeToggle = document.getElementById('darkModeToggle');
-    
     if (darkModeToggle) {
         if (localStorage.getItem('darkMode') === 'enabled') {
             document.body.classList.add('dark-mode');
@@ -70,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            
             if (document.body.classList.contains('dark-mode')) {
                 localStorage.setItem('darkMode', 'enabled');
                 darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
@@ -81,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== MODAL FILÓSOFOS ==========
     const modal = document.getElementById('filosofoModal');
     const modalImg = document.getElementById('modalImg');
     const modalName = document.getElementById('modalName');
@@ -127,12 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     const filosofoCards = document.querySelectorAll('.filosofo-card');
-    
     filosofoCards.forEach(card => {
         card.addEventListener('click', () => {
             const filosofoKey = card.getAttribute('data-filosofo');
             const data = filosofosData[filosofoKey];
-            
             if (data) {
                 modalImg.src = data.img;
                 modalName.textContent = data.nombre;
@@ -164,9 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ========== PIRÁMIDE DE VALORES INTERACTIVA ==========
     const valueRows = document.querySelectorAll('.value-row');
-    
     valueRows.forEach(row => {
         row.addEventListener('click', () => {
             valueRows.forEach(r => r.classList.remove('expanded'));
@@ -174,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ========== TEST INTERACTIVO ==========
     const questions = document.querySelectorAll('.test-question');
     const testResult = document.querySelector('.test-result');
     const restartBtn = document.getElementById('restartTest');
@@ -192,7 +179,6 @@ document.addEventListener('DOMContentLoaded', function() {
         userAnswers.forEach(answer => {
             if (answer === 'b') score++;
         });
-        
         const resultText = document.getElementById('testResultText');
         if (score === 3) {
             resultText.innerHTML = '🎉 ¡Excelente! Tienes un fuerte sentido ético profesional. Tomas decisiones basadas en principios y valores. ¡Sigue así! 🌟';
@@ -201,7 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             resultText.innerHTML = '⚠️ Necesitas reflexionar más sobre ética profesional. Recuerda que nuestra responsabilidad es ante todo con las personas y la verdad. ¡Revisa el manifiesto! 💪';
         }
-        
         questions.forEach(q => q.classList.remove('active'));
         testResult.style.display = 'block';
     }
@@ -213,9 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const questionDiv = option.closest('.test-question');
                 const qIndex = parseInt(questionDiv.getAttribute('data-q')) - 1;
                 const value = option.getAttribute('data-value');
-                
                 userAnswers[qIndex] = value;
-                
                 if (currentQuestion < questions.length - 1) {
                     currentQuestion++;
                     showQuestion(currentQuestion);
@@ -240,9 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== ANIMACIONES AL SCROLL ==========
     const animateElements = document.querySelectorAll('.metaphor-card, .purpose-card, .vulnerable-card, .filosofo-card, .negligence-card, .equipo-card, .value-row, .flip-card');
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -257,9 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // ========== CONTADOR DE ESTADÍSTICAS ==========
     const statNumbers = document.querySelectorAll('.stat-number');
-    
     function animateNumber(element, target) {
         let current = 0;
         const increment = target / 50;
@@ -295,11 +274,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroStats) statsObserver.observe(heroStats);
     }
     
-    // ========== MODAL PARA IMÁGENES GRANDES ==========
     const modalImagen = document.getElementById('modalImagen');
     const modalImgGrande = document.getElementById('imgModal');
     const cerrarModalImg = document.querySelector('.cerrar-modal');
-    
     const imagenesModal = document.querySelectorAll('.imagen-modal');
     
     imagenesModal.forEach(img => {
@@ -331,7 +308,67 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ========== MODO LECTURA PARA EL GUION ==========
+    // ========== ZOOM CON MOUSE PARA IMÁGENES ==========
+    const imagenesZoom = document.querySelectorAll('.imagen-zoom');
+    
+    imagenesZoom.forEach(img => {
+        let scale = 1;
+        const wrapper = img.closest('.imagen-zoom-wrapper');
+        
+        if (!wrapper) return;
+        
+        img.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            scale = Math.min(Math.max(scale + delta, 1), 3);
+            
+            this.style.transform = `scale(${scale})`;
+            this.style.cursor = scale > 1 ? 'zoom-out' : 'zoom-in';
+            
+            const rect = this.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            this.style.transformOrigin = `${x}% ${y}%`;
+            
+            if (scale > 1) {
+                this.style.cursor = 'grab';
+            }
+        }, { passive: false });
+        
+        img.addEventListener('mouseleave', function() {
+            scale = 1;
+            this.style.transform = 'scale(1)';
+            this.style.cursor = 'zoom-in';
+        });
+        
+        let isDragging = false;
+        let startX, startY, currentX = 0, currentY = 0;
+        
+        img.addEventListener('mousedown', function(e) {
+            if (scale > 1) {
+                isDragging = true;
+                startX = e.clientX - currentX;
+                startY = e.clientY - currentY;
+                this.style.cursor = 'grabbing';
+            }
+        });
+        
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            currentX = e.clientX - startX;
+            currentY = e.clientY - startY;
+            img.style.transform = `scale(${scale}) translate(${currentX * 0.1}px, ${currentY * 0.1}px)`;
+        });
+        
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                img.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+            }
+        });
+    });
+    
     const dialogosGuion = document.querySelectorAll('.dialogo-guion');
     let modoLecturaActivo = false;
     let indiceGuion = 0;
@@ -341,18 +378,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const btnContainer = document.createElement('div');
         btnContainer.style.textAlign = 'center';
         btnContainer.style.marginBottom = '2rem';
-        
         const btnLectura = document.createElement('button');
         btnLectura.id = 'modoLecturaGuion';
         btnLectura.className = 'btn btn-outline';
         btnLectura.innerHTML = '<i class="fas fa-eye"></i> Modo Lectura (clic para avanzar)';
         btnLectura.style.margin = '0 auto';
-        
         btnContainer.appendChild(btnLectura);
         guionSection.insertBefore(btnContainer, guionSection.querySelector('.guion-participantes'));
         
         const btn = document.getElementById('modoLecturaGuion');
-        
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             if (!modoLecturaActivo) {
@@ -401,10 +435,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== CONTADOR DE VISITAS DEL PODCAST ==========
     const podcastSection = document.getElementById('podcast');
     let visitasPodcast = localStorage.getItem('visitasPodcast') || 0;
-    
     if (podcastSection) {
         const observerPodcast = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -416,11 +448,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }, { threshold: 0.5 });
-        
         observerPodcast.observe(podcastSection);
     }
     
-    // ========== ANIMACIÓN DE PULSO PARA EL FINAL ==========
     const stylePulse = document.createElement('style');
     stylePulse.textContent = `
         @keyframes pulse {
@@ -431,15 +461,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(stylePulse);
     
     console.log('✅ Manifiesto de Identidad Ética - Grupo 3 cargado correctamente');
-    console.log('👥 Integrantes: 6 con fotos reales');
-    console.log('📚 AC1, AC2, AC3, AC4 completados');
-    console.log('🎨 Filósofos: 7 con imágenes de PostImage');
-    console.log('🌓 Modo oscuro/claro activado');
-    console.log('🃏 Tarjetas FLIP 3D activadas');
-    console.log('📝 Test interactivo listo');
-    console.log('💥 Animaciones explosivas activadas');
-    console.log('🖼️ Modal de imágenes grandes activado');
-    console.log('🎙️ Modo lectura del guion activado');
-    console.log('🎧 Podcast agregado con contador de visitas');
-    console.log('🎬 Video-reacción agregada');
 });

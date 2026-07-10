@@ -57,7 +57,8 @@ body.dark-mode .test-container,
 body.dark-mode .guion-seccion,
 body.dark-mode .guion-participantes,
 body.dark-mode .podcast-container,
-body.dark-mode .video-reaccion-container {
+body.dark-mode .video-reaccion-container,
+body.dark-mode .infografia-container {
     background: var(--card-bg);
     color: var(--text-color);
 }
@@ -409,7 +410,6 @@ body.dark-mode .section-filosofos {
     color: var(--gray-600);
 }
 
-/* ========== MODAL FILÓSOFOS ========== */
 .modal {
     display: none;
     position: fixed;
@@ -476,7 +476,7 @@ body.dark-mode .section-filosofos {
     font-size: 1rem;
 }
 
-/* ========== SECCIONES DE SEMANAS ========== */
+/* ========== SECCIONES ========== */
 .section {
     padding: 80px 0;
 }
@@ -882,6 +882,46 @@ body.dark-mode .imagen-pie {
     transform: scale(1.02);
 }
 
+/* ========== ZOOM CON MOUSE ========== */
+.imagen-zoom-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    cursor: zoom-in;
+}
+
+.imagen-zoom {
+    transition: transform 0.2s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+    transform-origin: center center;
+}
+
+.imagen-zoom:hover {
+    cursor: zoom-in;
+}
+
+.imagen-zoom-wrapper::after {
+    content: "🔍";
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.imagen-zoom-wrapper:hover::after {
+    opacity: 0.8;
+}
+
 /* ========== TEST ========== */
 .test-section {
     background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
@@ -1276,6 +1316,172 @@ body.dark-mode .video-reaccion-tags span {
     color: var(--accent);
 }
 
+/* ========== REFERENCIAS BIBLIOGRÁFICAS ========== */
+.referencia-ac {
+    margin-top: 2rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(45,106,79,0.08);
+    border-radius: 16px;
+    border-left: 4px solid var(--primary);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+body.dark-mode .referencia-ac {
+    background: rgba(45,106,79,0.15);
+}
+
+.referencia-ac .ref-badge {
+    background: linear-gradient(135deg, var(--primary), var(--orange));
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.referencia-ac p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.referencia-ac p a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.referencia-ac p a:hover {
+    text-decoration: underline;
+}
+
+body.dark-mode .referencia-ac p {
+    color: var(--gray-600);
+}
+
+/* ========== INFOGRAFÍA ========== */
+.infografia-section {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+body.dark-mode .infografia-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
+}
+
+.infografia-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+body.dark-mode .infografia-container {
+    background: #1e1e2e;
+}
+
+.infografia-wrapper {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.infografia-imagen {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+}
+
+.infografia-boton.izquierda {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--orange));
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.infografia-boton.izquierda:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+}
+
+.infografia-boton.izquierda i {
+    font-size: 1rem;
+}
+
+.infografia-info {
+    padding: 1.5rem 0 0 0;
+    text-align: left;
+}
+
+.infografia-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.infografia-info p {
+    color: var(--gray-600);
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.infografia-info p a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.infografia-info p a:hover {
+    text-decoration: underline;
+}
+
+body.dark-mode .infografia-info p {
+    color: var(--gray-600);
+}
+
+.infografia-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.infografia-tags span {
+    background: var(--gray-100);
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    color: var(--primary);
+}
+
+body.dark-mode .infografia-tags span {
+    background: #2a2a3e;
+    color: var(--primary-light);
+}
+
 /* ========== EQUIPO ========== */
 .equipo-grid {
     display: grid;
@@ -1576,6 +1782,26 @@ body.dark-mode .video-reaccion-tags span {
     .participantes-nombres {
         font-size: 0.65rem;
         gap: 0.5rem;
+    }
+    .infografia-boton.izquierda {
+        bottom: 15px;
+        left: 15px;
+        padding: 8px 14px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+    }
+    .infografia-boton.izquierda i {
+        font-size: 0.8rem;
+    }
+    .infografia-container {
+        padding: 1rem;
+    }
+    .referencia-item {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .ref-badge {
+        display: inline-block;
     }
 }
 
