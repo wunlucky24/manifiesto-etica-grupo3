@@ -790,24 +790,33 @@ body.dark-mode .semana4-bg-section {
     margin-bottom: 1rem;
 }
 
-/* ========== IMÁGENES DE SEMANAS ========== */
+/* ========== IMÁGENES DE SEMANAS - CORREGIDO ========== */
 .semana-imagen {
     margin-top: 3rem;
     text-align: center;
 }
 
-.semana-imagen img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: var(--shadow-lg);
-    transition: var(--transition);
-    cursor: pointer;
+.semana-imagen img,
+#ac1 .semana-imagen img,
+#ac2 .semana-imagen img,
+#ac3 .semana-imagen img,
+#ac4 .semana-imagen img,
+.imagen-zoom-wrapper img {
+    width: 100% !important;
+    max-width: 800px !important;
+    height: auto !important;
+    border-radius: 20px !important;
+    display: block !important;
+    margin: 0 auto !important;
+    box-shadow: var(--shadow-lg) !important;
+    image-rendering: auto !important;
+    -webkit-image-rendering: auto !important;
+    -moz-image-rendering: auto !important;
 }
 
 .semana-imagen img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transform: scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
 }
 
 .imagen-pie {
